@@ -202,6 +202,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId, onAddToCart, o
       </Grid>
     </Container>
   );
+  
 };
 
 export default ProductDetail;
