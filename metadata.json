@@ -1,0 +1,8 @@
+{
+  "name": "Copy of SolarDirect - Premium Solar Solutions",
+  "description": "A high-performance e-commerce platform for solar panels and renewable energy systems, featuring an AI-driven solar capacity advisor powered by Gemini.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
