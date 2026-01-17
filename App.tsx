@@ -18,7 +18,6 @@ import {
   ShoppingCart, 
   Menu as MenuIcon, 
   Home as HomeIcon, 
-  Store as StoreIcon, 
   AutoAwesome as AiIcon,
   Close as CloseIcon
 } from '@mui/icons-material';
@@ -28,6 +27,9 @@ import ShopPage from './pages/ShopPage';
 import AIAdvisorPage from './pages/AIAdvisorPage';
 import CartDrawer from './components/CartDrawer';
 import ProductDetail from './pages/ProductDetail';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import GalleryPage from './pages/GalleryPage';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(Page.HOME);
@@ -80,6 +82,12 @@ const App: React.FC = () => {
         return <ProductDetail productId={selectedProductId!} onAddToCart={addToCart} onBack={() => navigateTo(Page.SHOP)} />;
       case Page.AI_ADVISOR:
         return <AIAdvisorPage onShopClick={() => navigateTo(Page.SHOP)} />;
+      case Page.ABOUT:
+        return <AboutPage onExploreClick={() => navigateTo(Page.SHOP)} />;
+      case Page.CONTACT:
+        return <ContactPage />;
+      case Page.GALLERY:
+        return <GalleryPage />;
       default:
         return <HomePage onShopClick={() => navigateTo(Page.SHOP)} onAiClick={() => navigateTo(Page.AI_ADVISOR)} />;
     }
@@ -99,9 +107,12 @@ const App: React.FC = () => {
               </Typography>
             </Box>
 
-            <Box className="hidden md:flex space-x-8">
+            <Box className="hidden lg:flex space-x-6">
               <Button onClick={() => navigateTo(Page.HOME)} color="inherit" className="font-medium capitalize hover:text-amber-500">Home</Button>
               <Button onClick={() => navigateTo(Page.SHOP)} color="inherit" className="font-medium capitalize hover:text-amber-500">Shop</Button>
+              <Button onClick={() => navigateTo(Page.GALLERY)} color="inherit" className="font-medium capitalize hover:text-amber-500">Gallery</Button>
+              <Button onClick={() => navigateTo(Page.ABOUT)} color="inherit" className="font-medium capitalize hover:text-amber-500">About</Button>
+              <Button onClick={() => navigateTo(Page.CONTACT)} color="inherit" className="font-medium capitalize hover:text-amber-500">Contact</Button>
               <Button onClick={() => navigateTo(Page.AI_ADVISOR)} color="inherit" className="font-medium capitalize text-amber-600 bg-amber-50 px-4 rounded-full border border-amber-200">
                 <AiIcon className="mr-1 text-sm" /> AI Advisor
               </Button>
@@ -113,7 +124,7 @@ const App: React.FC = () => {
                   <ShoppingCart />
                 </Badge>
               </IconButton>
-              <IconButton className="md:hidden ml-2" onClick={() => setIsMenuOpen(true)}>
+              <IconButton className="lg:hidden ml-2" onClick={() => setIsMenuOpen(true)}>
                 <MenuIcon />
               </IconButton>
             </Box>
@@ -129,13 +140,22 @@ const App: React.FC = () => {
             <IconButton onClick={() => setIsMenuOpen(false)}><CloseIcon /></IconButton>
           </Box>
           <List>
-            <ListItem button onClick={() => navigateTo(Page.HOME)}>
+            <ListItem component="div" button onClick={() => navigateTo(Page.HOME)}>
               <ListItemText primary="Home" />
             </ListItem>
-            <ListItem button onClick={() => navigateTo(Page.SHOP)}>
+            <ListItem component="div" button onClick={() => navigateTo(Page.SHOP)}>
               <ListItemText primary="Shop Products" />
             </ListItem>
-            <ListItem button onClick={() => navigateTo(Page.AI_ADVISOR)}>
+            <ListItem component="div" button onClick={() => navigateTo(Page.GALLERY)}>
+              <ListItemText primary="Gallery" />
+            </ListItem>
+            <ListItem component="div" button onClick={() => navigateTo(Page.ABOUT)}>
+              <ListItemText primary="About" />
+            </ListItem>
+            <ListItem component="div" button onClick={() => navigateTo(Page.CONTACT)}>
+              <ListItemText primary="Contact" />
+            </ListItem>
+            <ListItem component="div" button onClick={() => navigateTo(Page.AI_ADVISOR)}>
               <ListItemText primary="AI Solar Advisor" className="text-amber-600 font-bold" />
             </ListItem>
           </List>
@@ -161,24 +181,23 @@ const App: React.FC = () => {
               <Typography variant="h6" className="text-white font-bold mb-4">SOLARDIRECT</Typography>
               <p className="mb-4 max-w-sm">Empowering the world with clean, renewable energy. Quality solar products delivered directly to your door.</p>
               <div className="flex space-x-4">
-                {/* Social icons placeholders */}
-                <div className="w-8 h-8 bg-slate-800 rounded-full"></div>
-                <div className="w-8 h-8 bg-slate-800 rounded-full"></div>
-                <div className="w-8 h-8 bg-slate-800 rounded-full"></div>
+                <div className="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-amber-500 transition-colors">f</div>
+                <div className="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-amber-500 transition-colors">t</div>
+                <div className="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-amber-500 transition-colors">i</div>
               </div>
             </div>
             <div>
-              <Typography variant="subtitle1" className="text-white font-bold mb-4">Links</Typography>
+              <Typography variant="subtitle1" className="text-white font-bold mb-4">Company</Typography>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:text-amber-400">About Us</a></li>
-                <li><a href="#" className="hover:text-amber-400">Installation Guide</a></li>
-                <li><a href="#" className="hover:text-amber-400">Warranty Policy</a></li>
-                <li><a href="#" className="hover:text-amber-400">Support</a></li>
+                <li><button onClick={() => navigateTo(Page.ABOUT)} className="hover:text-amber-400">About Us</button></li>
+                <li><button onClick={() => navigateTo(Page.GALLERY)} className="hover:text-amber-400">Installation Gallery</button></li>
+                <li><button onClick={() => navigateTo(Page.CONTACT)} className="hover:text-amber-400">Contact Us</button></li>
+                <li><button className="hover:text-amber-400">Support</button></li>
               </ul>
             </div>
             <div>
-              <Typography variant="subtitle1" className="text-white font-bold mb-4">Contact</Typography>
-              <ul className="space-y-2">
+              <Typography variant="subtitle1" className="text-white font-bold mb-4">Contact Info</Typography>
+              <ul className="space-y-2 text-sm">
                 <li>123 Solar Way, Helios City</li>
                 <li>contact@solardirect.com</li>
                 <li>+1 (555) 123-4567</li>
@@ -186,7 +205,7 @@ const App: React.FC = () => {
             </div>
           </div>
           <div className="border-t border-slate-800 mt-12 pt-8 text-center text-sm">
-            &copy; 2024 SolarDirect. All rights reserved.
+            &copy; {new Date().getFullYear()} SolarDirect. All rights reserved.
           </div>
         </Container>
       </footer>

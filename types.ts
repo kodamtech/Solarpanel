@@ -29,5 +29,8 @@ export enum Page {
   PRODUCT_DETAIL = 'detail',
   CART = 'cart',
   AI_ADVISOR = 'ai-advisor',
-  CHECKOUT = 'checkout'
+  CHECKOUT = 'checkout',
+  ABOUT = 'about',
+  CONTACT = 'contact',
+  GALLERY = 'gallery'
 }
